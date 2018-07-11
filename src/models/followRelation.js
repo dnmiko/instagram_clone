@@ -11,7 +11,7 @@ const FollowRelationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Users"
     },
-    "theOneWhoFollows": {
+    "the_one_who_follows": {
         type: Schema.Types.ObjectId,
         ref: "Users"
     },

@@ -11,7 +11,7 @@ const LikesSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Photos"
     },
-    "theOneWhoLikedIt": {
+    "the_one_who_liked_it": {
         type: Schema.Types.ObjectId,
         ref: "Users"
     },

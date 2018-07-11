@@ -62,7 +62,7 @@ const UserSchema = new Schema({
 });
 
 //Hacemos referencia al plugin de unique validator para que sólo se permitan registros únicos.
-userSchema.plugin(mongooseValidator);
+UserSchema.plugin(mongooseValidator);
 
 //Trigger de pre-save para encriptar la URL en la base de datos.
 UserSchema.pre('save', function(next) {
