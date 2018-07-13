@@ -44,7 +44,7 @@ export const UserType = new GraphQLObjectType({
             type: GraphQLString
         },
         follows: {
-            type: [followType],
+            type: [FollowType],
             resolve(user) {
                 const {
                     _id
@@ -55,7 +55,7 @@ export const UserType = new GraphQLObjectType({
             }
         },
         followed_by: {
-            type: [followType],
+            type: [FollowType],
             resolve(user) {
                 const {
                     _id
