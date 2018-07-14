@@ -5,44 +5,41 @@ import User from '../models/users';
 const expiresIn = "1d";
 const secret = "samplejwtinstagram";
 
-export const createToken = (email, password) => {
-    //Verificamos que los datos no sean vacío.
-    if (!email || !password) {
-        return false;
+export const createToken = function(user_name, password) {
+
+    if (!user_name || !password) {
+        return false
     }
 
-    //Para crear el JWT necesitamos primero encontrar el usuario al cuál le pertenece.
-    const user = User.findOne({
-        'email': email
-    }).then((user) => {
+    console.log(user_name, password)
+    const user = User.findOne({ 'user_name': user_name }).then((user) => {
         console.log(user);
-
-        //En caso de que lo encontremos, comparamos la contraseña para autenticarlo.
         const compare = new Promise((resolve, reject) => {
-            user.comparePassword(password, (err, isMatch) => {
-                //Si la contraseña fuera correcta, creamos un JWT.
+
+            user.comparePassword(password, function(err, isMatch) {
+                console.log(isMatch);
                 if (isMatch) {
                     let payload = {
-                        email: user.email,
+                        user_name: user.user_name,
                         id: user._id
                     }
+                    const token = jwt.sign(payload, secret, { expiresIn });
 
-                    //Creación del JWT.
-                    const token = jwt.sign(payload, secret, {
-                        expiresIn
-                    });
-
-                    resolve(token);
+                    resolve(token)
                 } else {
-                    reject(false);
+                    reject(false)
                 }
-            });
+            })
+
         });
 
-        return compare;
+        return compare
+
     }).catch((err) => {
-        return err;
+        return err
     });
 
-    return user;
+
+    return user
+
 }
