@@ -35,18 +35,6 @@ const UserSchema = new Schema({
         type: Number,
         default: new Date()
     },
-    "follows": [{
-        type: Schema.Types.ObjectId,
-        ref: "followRelation"
-    }],
-    "followed_by": [{
-        type: Schema.Types.ObjectId,
-        ref: "followRelation"
-    }],
-    "owned_photos": [{
-        type: Schema.Types.ObjectId,
-        ref: "Photos"
-    }],
     "is_active": {
         type: Boolean,
         default: true

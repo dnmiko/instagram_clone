@@ -22,10 +22,6 @@ const PhotoSchema = new Schema({
         type: String,
         required: true
     },
-    "likes": [{
-        type: Schema.Types.ObjectId,
-        ref: 'Likes'
-    }],
     "is_active": {
         type: Boolean,
         default: true
