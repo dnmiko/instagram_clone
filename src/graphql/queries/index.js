@@ -1,11 +1,11 @@
-import user from './users';
-/*import genres from './genres';
-import ratings from './ratings';
-import movies from './movies';*/
+import User from './users';
+import Photos from './photos';
+import Likes from './likes';
+import Follows from './follows';
 
 export default {
-    //...genres,
-    //...ratings,
-    ...user,
-    //...movies
+    ...User,
+    ...Photos,
+    ...Likes,
+    ...Follows
 }
