@@ -44,7 +44,7 @@ export const UserType = new GraphQLObjectType({
 export const UserInputType = new GraphQLInputObjectType({
     name: "AddUsers",
     description: "Agrega usuarios a la base de datos de Instagram",
-    fields = () => ({
+    fields: () => ({
         user_name: {
             type: GraphQLString
         },
@@ -69,7 +69,7 @@ export const UserInputType = new GraphQLInputObjectType({
 export const UserAdminInputType = new GraphQLInputObjectType({
     name: "AddUsersAdmin",
     description: "Agrega usuarios a la base de datos de Instagram como administrador",
-    fields = () => ({
+    fields: () => ({
         user_name: {
             type: GraphQLString
         },

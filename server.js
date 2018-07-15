@@ -3,6 +3,8 @@ import Mongoose from 'mongoose';
 import BodyParser from 'body-parser';
 import UserSchema from './src/models/users';
 import { createToken } from './src/resolvers/create';
+import graphQLHTTP from 'express-graphql';
+import schema from './src/graphql';
 
 //Iniciamos una instancia del servidor de express.
 const app = Express();
@@ -49,6 +51,15 @@ app.post('/login', function(req, res) {
 app.get('/', function(req, res) {
     res.send("Estoy funcionando");
 })
+
+app.use('/graphql', graphQLHTTP((req, res) => ({
+    schema,
+    graphiql: true,
+    pretty: true,
+    context: {
+        user: req.user
+    }
+})));
 
 app.listen(PORT, function() {
     console.log("Magic Happens in Port " + PORT);
