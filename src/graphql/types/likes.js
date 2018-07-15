@@ -59,3 +59,19 @@ export const LikeInputType = new GraphQLInputObjectType({
         }
     })
 });
+
+export const LikeAdminInputType = new GraphQLInputObjectType({
+    name: "AddLikeAdmin",
+    description: "Agrega una nueva relación de like a la base de datos de instagram.",
+    fields: () => ({
+        photo: {
+            type: GraphQLString
+        },
+        the_one_who_liked_it: {
+            type: GraphQLString
+        },
+        is_active: {
+            type: GraphQLBoolean
+        }
+    })
+});

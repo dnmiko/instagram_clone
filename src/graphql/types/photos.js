@@ -8,10 +8,7 @@ import {
 } from 'graphql';
 
 import User from '../../models/users';
-import Like from '../../models/likes';
-
 import { UserType } from './users';
-import { LikeType } from './likes';
 
 export const Phototype = new GraphQLObjectType({
     name: "ListPhotos",
@@ -41,15 +38,6 @@ export const Phototype = new GraphQLObjectType({
         url: {
             type: GraphQLString
         },
-        likes: {
-            type: LikeType,
-            resolve(photo) {
-                const {
-                    _id
-                } = like;
-                return Like.find({ photo: _id }).exec();
-            }
-        },
         is_active: {
             type: GraphQLBoolean
         }
@@ -71,6 +59,28 @@ export const PhotoInputType = new GraphQLInputObjectType({
         },
         url: {
             type: GraphQLString
+        }
+    })
+});
+
+export const PhotoAdminInputType = new GraphQLInputObjectType({
+    name: "AddPhotoAdmin",
+    description: "Agrega una nueva foto a la base de datos del clone de instagram",
+    fields: () => ({
+        owner: {
+            type: GraphQLString
+        },
+        description: {
+            type: GraphQLString
+        },
+        location: {
+            type: GraphQLString
+        },
+        url: {
+            type: GraphQLString
+        },
+        is_active: {
+            type: GraphQLBoolean
         }
     })
 });

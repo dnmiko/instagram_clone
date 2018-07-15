@@ -7,17 +7,6 @@ import {
     GraphQLNonNull
 } from 'graphql';
 
-import Follow from '../../models/followRelation';
-import {
-    FollowType
-} from './followRelation';
-
-import Photo from '../../models/photos';
-import {
-    PhotoType
-} from './photos';
-
-
 export const UserType = new GraphQLObjectType({
     name: "ListUsers",
     description: "Lista de los usuarios de la base de datos del clone de Instagram",
@@ -42,39 +31,6 @@ export const UserType = new GraphQLObjectType({
         },
         created_at: {
             type: GraphQLString
-        },
-        follows: {
-            type: [FollowType],
-            resolve(user) {
-                const {
-                    _id
-                } = user;
-                return Follow.find({
-                    the_one_who_follows: _id
-                }).exec();
-            }
-        },
-        followed_by: {
-            type: [FollowType],
-            resolve(user) {
-                const {
-                    _id
-                } = user;
-                return Follow.find({
-                    the_followed_one: _id
-                }).exec();
-            }
-        },
-        owned_photos: {
-            type: [PhotoType],
-            resolve(user) {
-                const {
-                    _id
-                } = user;
-                return Photo.find({
-                    owner: _id
-                }).exec();
-            }
         },
         is_active: {
             type: GraphQLBoolean,
@@ -101,8 +57,42 @@ export const UserInputType = new GraphQLInputObjectType({
         email: {
             type: GraphQLString
         },
+        password: {
+            type: GraphQLString
+        },
         profile_picture: {
             type: GraphQLString
+        }
+    })
+});
+
+export const UserAdminInputType = new GraphQLInputObjectType({
+    name: "AddUsersAdmin",
+    description: "Agrega usuarios a la base de datos de Instagram como administrador",
+    fields = () => ({
+        user_name: {
+            type: GraphQLString
+        },
+        name: {
+            type: GraphQLString
+        },
+        last_name: {
+            type: GraphQLString
+        },
+        email: {
+            type: GraphQLString
+        },
+        password: {
+            type: GraphQLString
+        },
+        profile_picture: {
+            type: GraphQLString
+        },
+        is_admin: {
+            type: GraphQLBoolean
+        },
+        is_active: {
+            type: GraphQLBoolean
         }
     })
 });
