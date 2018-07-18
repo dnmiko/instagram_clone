@@ -16,4 +16,4 @@ const queryAllLikes = {
     }
 }
 
-export default queryAllPhotos;
+export default queryAllLikes;

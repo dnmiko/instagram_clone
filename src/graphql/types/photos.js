@@ -10,7 +10,7 @@ import {
 import User from '../../models/users';
 import { UserType } from './users';
 
-export const Phototype = new GraphQLObjectType({
+export const PhotoType = new GraphQLObjectType({
     name: "ListPhotos",
     description: "Lista de las fotografías dentro de la base de datos de Instagram Clone",
     fields: () => ({
