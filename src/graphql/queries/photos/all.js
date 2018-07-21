@@ -1,11 +1,10 @@
 import {
-    PhotoType
-} from '../../types/photos';
-import {
     GraphQLList
 } from 'graphql';
-
 import Photo from '../../../models/photos';
+import {
+    PhotoType
+} from '../../types/photos';
 
 const queryAllPhotos = {
     type: new GraphQLList(PhotoType),

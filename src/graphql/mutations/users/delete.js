@@ -3,9 +3,13 @@ import {
     GraphQLID
 } from 'graphql';
 import User from '../../../models/users';
+<<<<<<< HEAD
 import {
     UserType
 } from '../../types/users';
+=======
+import { UserType } from '../../types/users';
+>>>>>>> e0ce78ddfd74820a146a9130f70195088ed33fc4
 
 export default {
     type: UserType,
