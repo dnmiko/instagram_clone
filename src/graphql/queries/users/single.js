@@ -4,7 +4,9 @@ import {
 } from 'graphql';
 
 import User from '../../../models/users';
-import { UserType } from '../../types/users';
+import {
+    UserType
+} from '../../types/users';
 
 const querySingleUser = {
     type: UserType,

@@ -1,5 +1,9 @@
-import { UserType } from '../../types/users';
-import { GraphQLList } from 'graphql';
+import {
+    UserType
+} from '../../types/users';
+import {
+    GraphQLList
+} from 'graphql';
 
 import User from '../../../models/users';
 

@@ -13,7 +13,7 @@ import {
 } from './users';
 
 export const FollowType = new GraphQLObjectType({
-    name: "List Follows",
+    name: "ListFollows",
     description: "Lista las relaciones de Follow entre usuarios de la base de datos de Instagram",
     fields: () => ({
         _id: {
