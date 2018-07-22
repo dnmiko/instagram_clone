@@ -65,34 +65,3 @@ export const UserInputType = new GraphQLInputObjectType({
         }
     })
 });
-
-export const UserAdminInputType = new GraphQLInputObjectType({
-    name: "AddUsersAdmin",
-    description: "Agrega usuarios a la base de datos de Instagram como administrador",
-    fields: () => ({
-        user_name: {
-            type: GraphQLString
-        },
-        name: {
-            type: GraphQLString
-        },
-        last_name: {
-            type: GraphQLString
-        },
-        email: {
-            type: GraphQLString
-        },
-        password: {
-            type: GraphQLString
-        },
-        profile_picture: {
-            type: GraphQLString
-        },
-        is_admin: {
-            type: GraphQLBoolean
-        },
-        is_active: {
-            type: GraphQLBoolean
-        }
-    })
-});

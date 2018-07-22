@@ -2,14 +2,10 @@ import {
     GraphQLNonNull
 } from 'graphql';
 import User from '../../../models/users';
-<<<<<<< HEAD
 import {
     UserInputType,
     UserType
 } from '../../types/users';
-=======
-import { UserInputType, UserType } from '../../types/users';
->>>>>>> e0ce78ddfd74820a146a9130f70195088ed33fc4
 
 export default {
     type: UserType,

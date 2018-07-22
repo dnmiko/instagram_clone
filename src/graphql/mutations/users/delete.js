@@ -3,27 +3,25 @@ import {
     GraphQLID
 } from 'graphql';
 import User from '../../../models/users';
-<<<<<<< HEAD
 import {
     UserType
 } from '../../types/users';
-=======
-import { UserType } from '../../types/users';
->>>>>>> e0ce78ddfd74820a146a9130f70195088ed33fc4
 
-export default {
+const deleteUser = {
     type: UserType,
     args: {
         id: {
-            name: "ID",
-            type: new GraphQLNonNull(GraphQLID)
+            name: 'ID',
+            type: GraphQLNonNull(GraphQLID)
         }
     },
-    resolver(root, params) {
-        const deletedUser = User.findByIdAndRemove(params.id).exec();
+    resolve(root, params) {
+        const user = User.findByIdAndRemove(params.id).exec();
 
-        if (!deletedUser) throw new Error("Error al borrar al usuario");
+        if (user === null) throw new Error("Error al borrar al usuario");
 
-        return deletedUser;
+        return user;
     }
 }
+
+export default deleteUser;

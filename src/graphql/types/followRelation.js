@@ -58,19 +58,3 @@ export const FollowInputType = new GraphQLInputObjectType({
         }
     })
 });
-
-export const FollowAdminInputType = new GraphQLInputObjectType({
-    name: "AddFollowAdmin",
-    description: "Crea una relación de follow entre dos usuarios de la base de datos de Instagram",
-    fields: () => ({
-        the_followed_one: {
-            type: GraphQLString
-        },
-        the_one_who_follows: {
-            type: GraphQLString
-        },
-        is_active: {
-            type: GraphQLBoolean
-        }
-    })
-});

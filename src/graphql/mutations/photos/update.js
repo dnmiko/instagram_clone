@@ -2,29 +2,29 @@ import {
     GraphQLNonNull,
     GraphQLID
 } from 'graphql';
-import User from '../../../models/users';
+import Photo from '../../../models/photos';
 import {
-    UserInputType,
-    UserType
-} from '../../types/users';
+    PhotoInputType,
+    PhotoType
+} from '../../types/photos';
 
 export default {
-    type: UserType,
+    type: PhotoType,
     args: {
         id: {
             name: "ID",
             type: new GraphQLNonNull(GraphQLID)
         },
         data: {
-            type: new GraphQLNonNull(UserInputType)
+            type: new GraphQLNonNull(PhotoInputType)
         }
     },
     resolve(root, params) {
-        return User.findByIdAndUpdate(params.id, {
+        return Photo.findByIdAndUpdate(params.id, {
             $set: { ...params.data
             }
         }).then((user) => {
-            return User.findById(params.id).exec();
+            return Photo.findById(params.id).exec();
         }).catch((err) => {
             throw new Error("Error al actualizar a un usuario");
         })

@@ -2,29 +2,29 @@ import {
     GraphQLNonNull,
     GraphQLID
 } from 'graphql';
-import User from '../../../models/users';
+import Follow from '../../../models/followRelation';
 import {
-    UserInputType,
-    UserType
-} from '../../types/users';
+    FollowInputType,
+    FollowType
+} from '../../types/followRelation';
 
 export default {
-    type: UserType,
+    type: FollowType,
     args: {
         id: {
             name: "ID",
             type: new GraphQLNonNull(GraphQLID)
         },
         data: {
-            type: new GraphQLNonNull(UserInputType)
+            type: new GraphQLNonNull(FollowInputType)
         }
     },
     resolve(root, params) {
-        return User.findByIdAndUpdate(params.id, {
+        return Follow.findByIdAndUpdate(params.id, {
             $set: { ...params.data
             }
-        }).then((user) => {
-            return User.findById(params.id).exec();
+        }).then((follow) => {
+            return Follow.findById(params.id).exec();
         }).catch((err) => {
             throw new Error("Error al actualizar a un usuario");
         })

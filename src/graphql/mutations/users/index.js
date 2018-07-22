@@ -4,6 +4,6 @@ import updateUser from './update';
 
 export default {
     addUser,
-    deleteUser
-    //updateUser
+    deleteUser,
+    updateUser
 }

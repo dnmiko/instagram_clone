@@ -10,8 +10,12 @@ import {
 import Photo from '../../models/photos';
 import User from '../../models/users';
 
-import { PhotoType } from './photos';
-import { UserType } from './users';
+import {
+    PhotoType
+} from './photos';
+import {
+    UserType
+} from './users';
 
 export const LikeType = new GraphQLObjectType({
     name: "ListLikes",
@@ -56,22 +60,6 @@ export const LikeInputType = new GraphQLInputObjectType({
         },
         the_one_who_liked_it: {
             type: GraphQLString
-        }
-    })
-});
-
-export const LikeAdminInputType = new GraphQLInputObjectType({
-    name: "AddLikeAdmin",
-    description: "Agrega una nueva relación de like a la base de datos de instagram.",
-    fields: () => ({
-        photo: {
-            type: GraphQLString
-        },
-        the_one_who_liked_it: {
-            type: GraphQLString
-        },
-        is_active: {
-            type: GraphQLBoolean
         }
     })
 });
